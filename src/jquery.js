@@ -102,7 +102,7 @@ window.$ = window.jQuery = function (selectorOrArray) {
                 newNode.appendChild(node);
             })
         },
-        //新增父节点
+        //新增父节点  每一个节点都新增一个父节点
         wrap(parentNode) {
             this.each((node) => {
                 this.before(parentNode);
