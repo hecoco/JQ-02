@@ -1,4 +1,4 @@
-window.jQuery = function(selectorOrArray) {
+window.$ = window.jQuery = function(selectorOrArray) {
     let elements;
     if (typeof selectorOrArray === 'string') elements = document.querySelectorAll(selectorOrArray);
     else if (selectorOrArray instanceof Array) elements = selectorOrArray;
@@ -75,6 +75,26 @@ window.jQuery = function(selectorOrArray) {
                 if (x && x.nodeType === 3) x = x.previousSibling;
             });
             return x;
+        },
+        //在节点前面增加兄弟节点
+        before (newNode) {
+            this.each((node)=>{
+                node.parentNode.insertBefore(newNode, node);
+            });
+            return this;
+        },
+        //新增子节点
+        append (newNode) {
+            this.each((node)=>{
+                newNode.appendChild(node);
+            });
+        },
+        //新增父节点
+        wrap (parentNode) {
+            this.each((node)=>{
+                this.before(parentNode);
+                this.append(parentNode);
+            });
         },
         print () {
             console.log(elements);
